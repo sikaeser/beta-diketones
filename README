@@ -1,0 +1,73 @@
+This data set was used to examine the reactive dynamics and
+spectroscopic properties of three beta-diketones: malonaldehyde (MA,
+propandial), acetoacetaldehyde (AAA, 3- oxobutanal) and acetylacetone
+(AcAc, pentan-2,4-dion), in a neural network based manner. The data
+set contains different geometries for the three molecules as well as
+for substructures (Amons [1]).
+
+In total the data set contains 71208 geometries with reference
+energies, forces and dipole moments calculated at the MP2/aug-cc-pVTZ
+level of theory calculated using the MOLPRO 2018.2.0 [2].
+
+For more details, see https://arxiv.org/abs/1911.09475
+
+
+---------------------------------------------------------------------------------------
+DATA SET FORMAT:
+
+The data is saved in a compressed numpy binary file (.npz) and
+contains a python dictionary with seven numpy arrays:
+
+R: Cartesian Coordinates of atoms (in Angstrom [A]), (num_data, max_atoms, 3)
+
+Q: Total charge (in elementary charges [e]), (num_data,)
+
+D: Dipole moment vector with respect to the origin (in elementary charges times
+   Angstrom [eA]), (num_data, 3)
+
+E: Potential energy with respect to free atoms (in electronvolt [eV]), (num_data,)
+
+F: Forces acting on atoms (in electronvolt per Angstrom [eV/A]), (num_data, max_atoms, 3)
+
+Z: Atomic number of atoms, (num_data, max_atoms)
+
+N: Number of atoms in structure (if N < max_atoms, the remaining entries are zero-padded)
+
+It is important to note that the potential energies of the structures
+are given with respect to free atoms. Thus, the constants listed below
+are subtracted from the Molpro output for each occurence of the
+corresponding atoms:
+
+H: -0.499821176024 eV
+
+C: -37.759560677467 eV
+
+O: -74.959294147330 eV
+
+
+
+---------------------------------------------------------------------------------------
+ACCESS DATA SET:
+
+The data set can be accessed using python:
+
+>>> data = np.load("beta-diketones_71208.npz")
+
+The different keywords of the python dictionary can be listed using
+
+>>> data.files
+>>>['Q', 'D', 'F', 'Z', 'R', 'E', 'N']
+
+and the individual entries can be loaded using the appropriate
+keyword, e.g. for the energy
+
+>>> energies = data["E"]
+
+
+
+
+---------------------------------------------------------------------------------------
+[1] Huang, B.; von Lilienfeld, O.A., arXiv:1707.04146
+
+[2] Werner, H.-J.; Knowles, P. J.; Knizia, G.; Manby, F. R.; Schütz, M.; et al.
+    https://www.molpro.net, 2018.2.0
