@@ -7,7 +7,7 @@ for substructures (Amons [1]).
 
 In total the data set contains 71208 geometries with reference
 energies, forces and dipole moments calculated at the MP2/aug-cc-pVTZ
-level of theory calculated using the MOLPRO 2018.2.0 [2].
+level of theory calculated using the MOLPRO [2].
 
 For more details, see https://arxiv.org/abs/1911.09475
 
@@ -38,11 +38,11 @@ are given with respect to free atoms. Thus, the constants listed below
 are subtracted from the Molpro output for each occurence of the
 corresponding atoms:
 
-H: -0.499821176024 eV
+H: -0.499821176024 ha
 
-C: -37.759560677467 eV
+C: -37.759560677467 ha
 
-O: -74.959294147330 eV
+O: -74.959294147330 ha
 
 
 
